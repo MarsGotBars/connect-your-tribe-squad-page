@@ -1,0 +1,21 @@
+.wrapper {
+  position: absolute;
+  overflow: clip;
+  ul {
+    padding: 3rem 0;
+    position: relative;
+
+    li {
+      left: 101%;
+      display: inline-block;
+      position: absolute;
+      color: var(--primary);
+      font-family: var(--none);
+      animation: slide-to-the-left 3s linear 1s infinite;
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+  }
+}

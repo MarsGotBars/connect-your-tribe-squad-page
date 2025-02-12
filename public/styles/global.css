@@ -1,0 +1,54 @@
+@font-face {
+  font-family: NoneMoon;
+  src: url("/assets/fonts/NoneMoon.ttf");
+}
+
+@font-face {
+  font-family: Space;
+  src: url("/assets/fonts/SpaceGrotesk.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+.wrapper,
+ul {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  --primary: #00b5d9;
+  --secondary: #282828;
+  --bg: #f5c981;
+  --none: NoneMoon;
+  --space: Space;
+  background: var(--bg);
+  color: var(--primary);
+  display: grid;
+  position: relative;
+  place-content: center;
+}
+
+h1 {
+  color: var(--secondary);
+  font-family: var(--space);
+  font-size: 15rem;
+  font-weight: 400;
+}
+
+/* Slide elements across 100 */
+@keyframes slide-to-the-left {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    /* accounting for left; 101%; */
+    transform: translateX(calc(-100vw - 101%));
+  }
+}
