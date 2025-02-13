@@ -4,7 +4,7 @@ const peopleContainer = document.querySelector('ul');
 
 const randomPlacement = () => {
     people.forEach(person => {
-        person.style.top = 
+        // person.style.top = Math.random();
     });
 }
 

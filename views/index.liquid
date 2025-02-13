@@ -1,11 +1,16 @@
-{% render 'partials/head.liquid', title: 'FDND', subtitle: 'Students' %}
+{% render 'partials/head.liquid'
+  , title: 'FDND'
+  , subtitle: 'Students' %}
 
 <div class="wrapper">
-<ul>
-  {% for person in persons %}
-    <li><a href="/student/{{ person.id }}">{{ person.name }}</a></li>
-  {% endfor %}
-</ul>
+  <ul>
+    {% for person in persons %}
+      <li>
+        <a href="/student/{{ person.id }}">{{ person.name }}</a>
+      </li>
+    {% endfor %}
+  </ul>
 </div>
-{% comment %} <details class="data" style="z-index: 100;"><summary>Data</summary><pre>{{ persons | json:4 }}</pre></details> {% endcomment %}
-{% render 'partials/foot.liquid', squads: squads %}
+
+{% render 'partials/foot.liquid'
+  , squads: squads %}

@@ -52,3 +52,7 @@ h1 {
     transform: translateX(calc(-100vw - 101%));
   }
 }
+
+footer{
+  z-index: 100;
+}
