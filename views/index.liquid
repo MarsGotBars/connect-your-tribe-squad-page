@@ -5,7 +5,7 @@
 <div class="wrapper">
   <ul>
     {% for person in persons %}
-      <li>
+      <li style="--i: {{forloop.index}}">
         <a href="/student/{{ person.id }}">{{ person.name }}</a>
       </li>
     {% endfor %}

@@ -42,17 +42,3 @@ h1 {
   font-weight: 400;
 }
 
-/* Slide elements across 100 */
-@keyframes slide-to-the-left {
-  from {
-    transform: translateX(0%);
-  }
-  to {
-    /* accounting for left; 101%; */
-    transform: translateX(calc(-100vw - 101%));
-  }
-}
-
-footer{
-  z-index: 100;
-}

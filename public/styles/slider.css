@@ -1,15 +1,42 @@
+body {
+  --distance: 10vw;
+}
+
 .wrapper {
   position: absolute;
+  overflow: hidden;
+  padding: 3rem 0;
+  
   overflow: clip;
   padding: 3rem 0;
   ul {
     position: relative;
+    height: 100%; /* Ensures % values for top work correctly */
+
     li {
-      left: 101%;
       display: inline-block;
       position: absolute;
       color: var(--primary);
       font-family: var(--none);
+      font-size: 36px;
+      left: calc(100% + (var(--i) * var(--distance)));
+      animation: slide-to-the-left 20s linear infinite;
+
+      /* Top positions now use % */
+      &:nth-child(odd) {
+        top: calc(var(--i) * 4% + 3vw);
+      }
+      &:nth-child(3n) {
+        top: calc(var(--i) * 10% - 2%);
+      }
+      &:nth-child(5n) {
+        top: calc(var(--i) * 4.5% + 1%);
+      }      
+
+      &:hover {
+        animation-play-state: paused;
+      }
+
       animation: slide-to-the-left 7s linear 1s infinite;
       a {
         color: inherit;
@@ -19,5 +46,15 @@
         animation-play-state: paused;
       }
     }
+  }
+}
+
+/* Adjusted animation */
+@keyframes slide-to-the-left {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(calc(-1 * var(--distance) * (57 - var(--i))));
   }
 }
