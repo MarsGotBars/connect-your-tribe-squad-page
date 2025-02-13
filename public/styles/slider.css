@@ -32,12 +32,6 @@ body {
       &:nth-child(5n) {
         top: calc(var(--i) * 4.5% + 1%);
       }      
-
-      &:hover {
-        animation-play-state: paused;
-      }
-
-      animation: slide-to-the-left 7s linear 1s infinite;
       a {
         color: inherit;
         text-decoration: none;
