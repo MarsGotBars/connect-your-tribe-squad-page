@@ -87,7 +87,6 @@ app.get("/json", async function (request, response) {
 app.get("/squads/:name", async function (request, response) {
   // Haal alle personen uit de WHOIS API op, van dit jaar
   const squadName = request.params.name
-  console.log(squadName);
   
   const personResponse = await fetch(
     'https://fdnd.directus.app/items/squad/?fields=persons.person_id.*&filter[name][_eq]=' + squadName
@@ -95,13 +94,11 @@ app.get("/squads/:name", async function (request, response) {
 
   // En haal daarvan de JSON op
   const personResponseJSON = await personResponse.json();
-  console.log(personResponseJSON.data[0].persons.length);
 
   let persons = []
-  personResponseJSON.data[0].persons.forEach(function(person) {
+  personResponseJSON.data[0].persons.forEach((person) => {
     persons.push(person.person_id)
   })
-  console.log(persons)
   
   // personResponseJSON bevat gegevens van alle personen uit alle squads van dit jaar
   // Je zou dat hier kunnen filteren, sorteren, of zelfs aanpassen, voordat je het doorgeeft aan de view

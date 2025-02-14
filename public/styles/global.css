@@ -26,6 +26,8 @@ body {
   --primary: #00b5d9;
   --secondary: #282828;
   --bg: #f5c981;
+  --accent: #00c46d;
+  --highlight: #ff3b30;
   --none: NoneMoon;
   --space: Space;
   background: var(--bg);
@@ -34,11 +36,75 @@ body {
   position: relative;
   place-content: center;
 }
-
 h1 {
   color: var(--secondary);
   font-family: var(--space);
-  font-size: 15rem;
   font-weight: 400;
 }
 
+.xxxl {
+  font-size: clamp(6rem, 12.5vw, 15rem);
+}
+.xxl {
+  font-size: clamp(2.5rem, 4vw, 6rem);
+}
+
+.xl {
+  font-size: clamp(2.25rem, 3.5vw, 5rem);
+}
+
+.lg {
+  font-size: clamp(2rem, 3vw, 4rem);
+}
+
+.md {
+  font-size: clamp(1.5rem, 2.5vw, 3.5rem);
+}
+
+.sm {
+  font-size: clamp(1.5rem, 2vw, 3rem);
+}
+
+.xs {
+  font-size: clamp(1.25rem, 1vw, 2rem);
+}
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+  transition: .3s ;
+}
+
+footer {
+  max-height: 3rem;
+  width: fit-content;
+  padding: 12px;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  font-family: var(--none);
+  gap: 0.5rem;
+  ul {
+    li {
+      display: inline;
+      font-size: 1.5rem;
+      color: var(--accent);
+      &:hover {
+        color: var(--highlight);
+      }
+      a {
+        &.active {
+          color: var(--highlight);
+        }
+      }
+    }
+    &:has(li:nth-child(even):hover):hover > li{
+      color: var(--highlight);
+    }
+  }
+}

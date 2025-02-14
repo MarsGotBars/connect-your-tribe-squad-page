@@ -1,54 +1,51 @@
-body {
-  --distance: 10vw;
-}
-
 .wrapper {
   position: absolute;
-  overflow: hidden;
-  padding: 3rem 0;
-  
-  overflow: clip;
-  padding: 3rem 0;
+  overflow-x: hidden;
+  padding: 3rem 0 0 0;
+  /* styling in case of no javascript */
   ul {
+    transform: translateX(100%);
     position: relative;
-    height: 100%; /* Ensures % values for top work correctly */
-
+    height: 100%;
+    padding: 0 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    place-content: start;
+    justify-content: start;
+    gap: 1rem;
     li {
+      --personalDistance: calc(-5vw * (var(--itemCount) - var(--item)));
+      /* higher = slower */
+      --animationSpeed: .4;
+      --animationDuration: calc(1s * var(--itemCount) * var(--animationSpeed));
       display: inline-block;
-      position: absolute;
+      height: fit-content;
       color: var(--primary);
       font-family: var(--none);
-      font-size: 36px;
-      left: calc(100% + (var(--i) * var(--distance)));
-      animation: slide-to-the-left 20s linear infinite;
-
-      /* Top positions now use % */
-      &:nth-child(odd) {
-        top: calc(var(--i) * 4% + 3vw);
-      }
-      &:nth-child(3n) {
-        top: calc(var(--i) * 10% - 2%);
-      }
-      &:nth-child(5n) {
-        top: calc(var(--i) * 4.5% + 1%);
-      }      
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
+      left: 0;
+      animation: slide-to-the-left ease infinite;
+      animation-duration: var(--animationDuration);
+      animation-delay: calc(.7s * var(--item));
+      /* Negate a bad UX/UI by changing the color of stacked li elements */
+      mix-blend-mode: difference;
       &:hover {
         animation-play-state: paused;
+        color: var(--highlight);
       }
+      a {
+        color: inherit;
+      }
+      
+    }
+    &.interaction li{
+      position: absolute;
     }
   }
 }
 
 /* Adjusted animation */
 @keyframes slide-to-the-left {
-  from {
-    transform: translateX(0%);
-  }
   to {
-    transform: translateX(calc(-1 * var(--distance) * (57 - var(--i))));
+    transform: translateX(calc(-100vw - 100% + var(--personalDistance)));
   }
 }

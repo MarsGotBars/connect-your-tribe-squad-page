@@ -1,11 +1,12 @@
+{% assign itemAmount = persons | size %}
 {% render 'partials/head.liquid'
   , title: 'FDND'
   , subtitle: 'Students' %}
 
 <div class="wrapper">
-  <ul>
+  <ul class="list">
     {% for person in persons %}
-      <li style="--i: {{forloop.index}}">
+      <li style="--item: {{forloop.index}}; --itemCount: {{itemAmount}}">
         <a href="/student/{{ person.id }}">{{ person.name }}</a>
       </li>
     {% endfor %}
