@@ -1,6 +1,7 @@
 .wrapper {
   position: absolute;
   overflow-x: hidden;
+  /* padding top, wrote it this way in case I want to swap back to top & bottom later */
   padding: 3rem 0 0 0;
   /* styling in case of no javascript */
   ul {
@@ -38,6 +39,9 @@
       
     }
     &.interaction li{
+      /* Wonder if this is a good use-case? */
+      /* https://developer.mozilla.org/en-US/docs/Web/CSS/will-change */
+      will-change: transform;
       position: absolute;
     }
   }

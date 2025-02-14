@@ -12,9 +12,8 @@ const randomPlacement = () => {
   people.forEach((person) => {
     const randomTextSize = Math.floor(Math.random() * fontSizeClasses.length + 1)
     const randomNumber = topPlacement();
-    console.log(randomNumber);
-
-    lastNumber = randomNumber;  // Update lastNumber for the next element
+    // Update lastNumber for the next element
+    lastNumber = randomNumber;  
     person.style.top = `${randomNumber}%`;
     person.classList.add(fontSizeClasses[randomTextSize])
   });
@@ -33,8 +32,4 @@ const topPlacement = () => {
   return randomNumber;
 };
 
-const itemDistance = () => {
-    
-    const returnDistance = `-20vw * (var(--itemCount) - var(--item)`
-}
 randomPlacement();
