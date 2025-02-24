@@ -66,7 +66,7 @@ h1 {
 }
 
 .xs {
-  font-size: clamp(1.25rem, 1vw, 2rem);
+  font-size: clamp(1.25rem, 2vw, 2rem);
 }
 ul {
   list-style-type: none;
@@ -89,22 +89,29 @@ footer {
   align-items: center;
   font-family: var(--none);
   gap: 0.5rem;
+
   ul {
+
     li {
       display: inline;
       font-size: 1.5rem;
       color: var(--accent);
+
       &:hover {
         color: var(--highlight);
       }
+
       a {
+
         &.active {
           color: var(--highlight);
         }
       }
     }
+
     &:has(li:nth-child(even):hover):hover > li{
       color: var(--highlight);
     }
+
   }
 }

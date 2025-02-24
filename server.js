@@ -18,6 +18,8 @@ const squadResponse = await fetch(
   'https://fdnd.directus.app/items/squad?filter={"_and":[{"cohort":"2425"},{"tribe":{"name":"FDND Jaar 1"}}]}'
 );
 
+
+
 // Lees van de response van die fetch het JSON object in, waar we iets mee kunnen doen
 const squadResponseJSON = await squadResponse.json();
 
@@ -41,6 +43,10 @@ app.set("views", "./views");
 
 // Zorg dat werken met request data makkelijker wordt
 app.use(express.urlencoded({ extended: true }));
+
+app.get("/berichten", async function (request, response) {
+  response.render("messages.liquid", { messages: messages });
+});
 
 // Om Views weer te geven, heb je Routes nodig
 // Maak een GET route voor de index
@@ -86,20 +92,21 @@ app.get("/json", async function (request, response) {
 
 app.get("/squads/:name", async function (request, response) {
   // Haal alle personen uit de WHOIS API op, van dit jaar
-  const squadName = request.params.name
-  
+  const squadName = request.params.name;
+
   const personResponse = await fetch(
-    'https://fdnd.directus.app/items/squad/?fields=persons.person_id.*&filter[name][_eq]=' + squadName
+    "https://fdnd.directus.app/items/squad/?fields=persons.person_id.*&filter[name][_eq]=" +
+      squadName
   );
 
   // En haal daarvan de JSON op
   const personResponseJSON = await personResponse.json();
 
-  let persons = []
+  let persons = [];
   personResponseJSON.data[0].persons.forEach((person) => {
-    persons.push(person.person_id)
-  })
-  
+    persons.push(person.person_id);
+  });
+
   // personResponseJSON bevat gegevens van alle personen uit alle squads van dit jaar
   // Je zou dat hier kunnen filteren, sorteren, of zelfs aanpassen, voordat je het doorgeeft aan de view
 
@@ -111,11 +118,15 @@ app.get("/squads/:name", async function (request, response) {
   });
 });
 
+let messages = [];
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
-app.post("/", async function (request, response) {
+app.post("/berichten", async function (request, response) {
   // Je zou hier data kunnen opslaan, of veranderen, of wat je maar wilt
   // Er is nog geen afhandeling van POST, redirect naar GET op /
-  response.redirect(303, "/");
+  messages.push(request.body.message)
+  console.log(messages);
+  
+  response.redirect(303, "/berichten");
 });
 
 // Maak een GET route voor een detailpagina met een route parameter, id

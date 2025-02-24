@@ -1,13 +1,18 @@
 <footer>
-  <h2 class="sm">Squads</h2>
-  <ul>
-    {% for squad in squads %}
-      <li>
-        <a href="/squads/{{ squad.name }}">{{ squad.name }}</a>
-      </li>
-      {% unless forloop.last %}
-        <li><a href="/">/</a></li>
-      {% endunless %}
-    {% endfor %}
-  </ul>
+  {% unless emptyProp %}
+    <h2 class="sm">Squads</h2>
+    <ul>
+      {% for squad in squads %}
+        <li>
+          <a href="/squads/{{ squad.name }}">{{ squad.name }}</a>
+        </li>
+        {% unless forloop.last %}
+          <li>
+            <a>/</a>
+          </li>
+        {% endunless %}
+      {% endfor %}
+    </ul>
+  {% endunless %}
+
 </footer></body></html>

@@ -1,0 +1,20 @@
+{% render 'partials/head.liquid'
+  , form: true %}
+
+<form action="/berichten" method="post">
+  <label>
+    comment
+    <input
+      required
+      type="text"
+      name="message">
+  </label>
+  <button type="submit">SEND IT</button>
+</form>
+<ul>
+  {% for msg in messages %}
+    <li>{{ msg }}</li>
+  {% endfor %}
+</ul>
+{% render 'partials/foot.liquid'
+  , emptyProp: true %}
